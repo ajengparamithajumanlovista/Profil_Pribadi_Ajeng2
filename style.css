@@ -25,6 +25,81 @@ a {
     color: inherit;
 }
 
+
+/* ==========================================
+   13. JAVASCRIPT ANIMATION
+========================================== */
+
+/* Animasi muncul saat scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Warna menu navigasi aktif */
+.navbar .nav-link.active {
+    color: var(--accent);
+}
+
+/* ==========================================
+   14. TOMBOL KEMBALI KE ATAS
+========================================== */
+
+.back-to-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 999;
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+
+    background: var(--accent);
+    color: #171222;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.back-to-top.show-button {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: #d0c1ff;
+}
+
+/* Mengikuti pengaturan animasi perangkat */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .back-to-top {
+        transition: none;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* ==================================================
    2. NAVBAR
    ================================================== */
@@ -580,4 +655,94 @@ a {
     .contact-panel {
         padding: 24px;
     }
+}
+
+/* ==========================================
+   13. JAVASCRIPT ANIMATION
+========================================== */
+
+/* Animasi konten saat scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Navigasi aktif */
+.navbar .nav-link.active {
+    color: var(--accent);
+}
+
+/* Transisi kartu keahlian */
+.skill-card {
+    transition: transform 0.3s ease;
+}
+
+
+/* ==========================================
+   14. TOMBOL KEMBALI KE ATAS
+========================================== */
+
+.back-to-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 999;
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+
+    background: var(--accent);
+    color: #171222;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+/* Tombol muncul ketika halaman di-scroll */
+.back-to-top.show-button {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Efek ketika tombol diarahkan kursor */
+.back-to-top:hover {
+    background: #d0c1ff;
+}
+
+
+/* ==========================================
+   15. PENGATURAN AKSESIBILITAS
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .reveal,
+    .back-to-top,
+    .skill-card {
+        transition: none;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+
 }
