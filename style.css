@@ -746,3 +746,204 @@ a {
     }
 
 }
+
+
+/* ==========================================
+   16. LIGHT MODE / DARK MODE
+   ========================================== */
+
+/* Dark mode menjadi tema awal */
+:root,
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #10131b;
+    --bg-section: #171c27;
+    --card: #1c2230;
+    --text: #f5f6fb;
+    --muted: #a9b1c2;
+    --accent: #b9a0ff;
+    --border: #343a49;
+    --navbar-bg: rgba(16, 19, 27, 0.96);
+    --table-head: #29243a;
+    --icon-bg: #302943;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #f7f7fb;
+    --bg-section: #eeeef5;
+    --card: #ffffff;
+    --text: #242333;
+    --muted: #686879;
+    --accent: #7554c8;
+    --border: #dedbe8;
+    --navbar-bg: rgba(247, 247, 251, 0.96);
+    --table-head: #ece7f8;
+    --icon-bg: #eee9fa;
+}
+
+body,
+.site-navbar,
+.content-card,
+.highlight-card,
+.skill-card,
+.profile-card,
+.contact-panel,
+.custom-table-wrap,
+.floating-chip,
+.site-footer {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.site-navbar {
+    background: var(--navbar-bg);
+    backdrop-filter: blur(12px);
+}
+
+.custom-table thead th {
+    background: var(--table-head);
+}
+
+.interest-icon,
+.skill-symbol,
+.contact-icon {
+    background: var(--icon-bg);
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background: var(--card);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease,
+                color 0.3s ease, border-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.theme-icon {
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+:root[data-theme="light"] .btn-outline-light-custom {
+    color: var(--text);
+    border-color: #9993a8;
+}
+
+:root[data-theme="light"] .btn-outline-light-custom:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+:root[data-theme="light"] .custom-table thead th {
+    color: var(--accent);
+}
+
+:root[data-theme="light"] .navbar-toggler {
+    border-color: var(--border);
+}
+
+:root[data-theme="light"] .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* ==========================================
+   17. ANIMASI DAN MICRO-INTERACTIONS
+   ========================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease var(--reveal-delay, 0ms),
+                transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.skill-card {
+    transition: transform 0.28s ease, box-shadow 0.28s ease,
+                border-color 0.28s ease, background-color 0.3s ease;
+}
+
+.skill-card:hover,
+.skill-card.is-hovered {
+    transform: translateY(-7px);
+    border-color: var(--accent);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.content-card,
+.highlight-card,
+.profile-card,
+.contact-panel {
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+                background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.content-card:hover,
+.highlight-card:hover,
+.experience-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.floating-chip {
+    animation: gentleFloat 4s ease-in-out infinite;
+}
+
+.chip-bottom {
+    animation-delay: 1.2s;
+}
+
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.status-dot {
+    box-shadow: 0 0 0 0 rgba(158, 229, 189, 0.55);
+    animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+    70% { box-shadow: 0 0 0 8px rgba(158, 229, 189, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(158, 229, 189, 0); }
+}
+
+@media (max-width: 991px) {
+    .theme-toggle {
+        margin-top: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
